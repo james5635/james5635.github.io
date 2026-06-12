@@ -1,0 +1,117 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const skills = [
+  'HTML', 'CSS', 'JavaScript', 'TypeScript', 'Accessibility',
+  'Figma to Design', 'Responsive Web Design', 'Git', 'React'
+];
+
+const education = {
+  school: 'University Name',
+  location: 'Phnom Penh',
+  degree: 'Bachelor in Computer Science',
+  period: '2020 - 2024',
+  achievements: [
+    "Dean's List for academic excellence",
+    'Led team project on web application development',
+    'Participated in coding competitions'
+  ]
+};
+
+const experience = [
+  {
+    company: 'Tech Company',
+    location: 'Phnom Penh',
+    title: 'Frontend Developer Intern',
+    period: 'Jun 2023 - Aug 2023',
+    achievements: [
+      'Developed responsive web interfaces using HTML, CSS, and JavaScript',
+      'Collaborated with senior developers on React projects',
+      'Improved site accessibility following WCAG guidelines'
+    ],
+    skills: ['HTML', 'CSS', 'JavaScript', 'React']
+  },
+  {
+    company: 'Startup Inc',
+    location: 'Remote',
+    title: 'Freelance Web Developer',
+    period: '2022 - Present',
+    achievements: [
+      'Built portfolio websites for local businesses',
+      'Implemented responsive designs for mobile compatibility',
+      'Optimized website performance and SEO'
+    ],
+    skills: ['HTML', 'CSS', 'JavaScript', 'WordPress']
+  }
+];
+---
+
+<Layout title="Sou Chanrojame | Frontend Developer">
+  <main class="container">
+    <header>
+      <div class="profile-info">
+        <div class="text-info">
+          <h1>Sou Chanrojame</h1>
+          <h2>Junior Frontend Developer</h2>
+          <p>
+            St. 612, Phnom Penh<br />
+            (+855) 92926814<br />
+            <a href="mailto:brorojame2030@gmail.com">brorojame2030@gmail.com</a>
+          </p>
+        </div>
+        <img
+          src="/photo_2024-11-03_10-28-05.jpg"
+          alt="Sou Chanrojame"
+          class="profile-img"
+        />
+      </div>
+      <hr />
+    </header>
+
+    <section>
+      <h3>Skills</h3>
+      <ul class="skills-list">
+        {skills.map((skill) => (
+          <li class="skill-tag">{skill}</li>
+        ))}
+      </ul>
+    </section>
+
+    <section>
+      <h3>Education</h3>
+      <div class="entry">
+        <h4>{education.school}, {education.location} - {education.degree}</h4>
+        <span>{education.period}</span>
+        <ul>
+          {education.achievements.map((item) => (
+            <li>{item}</li>
+          ))}
+        </ul>
+      </div>
+    </section>
+
+    <section>
+      <h3>Experience</h3>
+      {experience.map((job) => (
+        <div class="entry">
+          <h4>{job.company}, {job.location} - {job.title}</h4>
+          <span>{job.period}</span>
+          <ul>
+            {job.achievements.map((item) => (
+              <li>{item}</li>
+            ))}
+          </ul>
+          <p><strong>Skills:</strong> {job.skills.join(', ')}</p>
+        </div>
+      ))}
+    </section>
+
+    <section>
+      <h3>Across the Internet</h3>
+      <div class="social-links">
+        <a href="https://linkedin.com/in/yourusername" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+        <a href="https://github.com/yourusername" target="_blank" rel="noopener noreferrer">GitHub</a>
+      </div>
+    </section>
+  </main>
+</Layout>
