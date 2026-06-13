@@ -8,63 +8,118 @@
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
 
   <style>
+    /* Base Setup & Variables */
+    :root {
+      --bg-gradient: linear-gradient(135deg, #f5f7ff, #ffffff);
+      --card-bg: #ffffff;
+      --text-main: #222222;
+      --text-title: #2b2d42;
+      --text-sub: #555555;
+      --accent: #3a86ff;
+      --item-bg: #f7f9fc;
+      --shadow: 0 12px 40px rgba(0, 0, 0, 0.08);
+      --toggle-btn-bg: #f7f9fc;
+    }
+
+    /* Dark Theme Variables */
+    [data-theme="dark"] {
+      --bg-gradient: linear-gradient(135deg, #0f111a, #161925);
+      --card-bg: #1e2235;
+      --text-main: #e2e8f0;
+      --text-title: #ffffff;
+      --text-sub: #a0aec0;
+      --accent: #4cc9f0;
+      --item-bg: #282e48;
+      --shadow: 0 12px 40px rgba(0, 0, 0, 0.4);
+      --toggle-btn-bg: #282e48;
+    }
+
     * {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
       font-family: "Poppins", sans-serif;
+      transition: background 0.3s ease, color 0.3s ease, box-shadow 0.3s ease;
     }
 
     body {
-      background: linear-gradient(135deg, #f5f7ff, #ffffff);
-      color: #222;
+      background: var(--bg-gradient);
+      color: var(--text-main);
       min-height: 100vh;
       display: flex;
       align-items: center;
       justify-content: center;
-      padding: 20px;
+      padding: 40px 20px;
     }
 
     .card {
-      background: #fff;
+      background: var(--card-bg);
       width: 100%;
-      max-width: 650px;
-      border-radius: 18px;
-      padding: 30px;
-      box-shadow: 0 12px 30px rgba(0,0,0,0.08);
+      max-width: 800px;
+      border-radius: 24px;
+      padding: 45px;
+      box-shadow: var(--shadow);
+      position: relative;
+    }
+
+    /* Rounded Rectangle Toggle Button */
+    .theme-toggle {
+      position: absolute;
+      top: 40px;
+      right: 45px;
+      background: var(--toggle-btn-bg);
+      border: none;
+      color: var(--accent);
+      padding: 8px 18px; /* Gives it a distinct rectangular shape */
+      border-radius: 10px; /* Rounded rectangle corners */
+      cursor: pointer;
+      font-size: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .theme-toggle:hover {
+      opacity: 0.9;
+      transform: scale(1.02);
+    }
+
+    .theme-toggle:active {
+      transform: scale(0.98);
     }
 
     .name {
-      font-size: 28px;
+      font-size: 36px;
       font-weight: 600;
-      margin-bottom: 10px;
-      color: #2b2d42;
+      margin-bottom: 12px;
+      color: var(--text-title);
     }
 
     .contact {
-      font-size: 14px;
-      color: #555;
-      margin-bottom: 20px;
-      line-height: 1.6;
+      font-size: 16px;
+      color: var(--text-sub);
+      margin-bottom: 35px;
+      line-height: 1.8;
     }
 
     .section {
-      margin-top: 20px;
+      margin-top: 30px;
     }
 
     .section h2 {
-      font-size: 16px;
-      color: #3a86ff;
-      margin-bottom: 8px;
-      letter-spacing: 0.5px;
+      font-size: 18px;
+      color: var(--accent);
+      margin-bottom: 12px;
+      letter-spacing: 0.8px;
     }
 
     .item {
-      background: #f7f9fc;
-      padding: 12px 15px;
-      border-radius: 10px;
-      margin-top: 8px;
-      font-size: 14px;
+      background: var(--item-bg);
+      padding: 18px 22px;
+      border-radius: 12px;
+      margin-top: 10px;
+      font-size: 16px;
+      line-height: 1.6;
     }
 
     .highlight {
@@ -72,22 +127,12 @@
     }
 
     a {
-      color: #3a86ff;
+      color: var(--accent);
       text-decoration: none;
     }
 
     a:hover {
       text-decoration: underline;
-    }
-
-    .badge {
-      display: inline-block;
-      margin-top: 10px;
-      padding: 6px 10px;
-      background: #eef3ff;
-      border-radius: 8px;
-      font-size: 12px;
-      color: #3a86ff;
     }
   </style>
 </head>
@@ -95,6 +140,9 @@
 <body>
 
   <div class="card">
+    <button class="theme-toggle" id="themeToggle" aria-label="Toggle Theme">
+      <span id="toggleIcon">🌙</span>
+    </button>
 
     <div class="name">Sou Chanrojame</div>
 
@@ -103,11 +151,10 @@
       👨‍💻 Github: <a href="https://github.com/james5635" target="_blank">github.com/james5635</a>
     </div>
 
-
     <div class="section">
       <h2>🎓 EDUCATION</h2>
       <div class="item">
-        Royal University of Phnom Penh (RUPP)<br>
+        <span class="highlight">Royal University of Phnom Penh (RUPP)</span><br>
         BSc in Computer Science (2022–2026) [GPA: 3.56]
       </div>
     </div>
@@ -126,8 +173,42 @@
         Introduction to C++ (1st edition)
       </div>
     </div>
-
   </div>
+
+  <script>
+    const themeToggleBtn = document.getElementById('themeToggle');
+    const toggleIcon = document.getElementById('toggleIcon');
+
+    const savedTheme = localStorage.getItem('theme');
+    const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    
+    if (savedTheme === 'dark' || (!savedTheme && systemPrefersDark)) {
+      setDarkTheme();
+    } else {
+      setLightTheme();
+    }
+
+    themeToggleBtn.addEventListener('click', () => {
+      const currentTheme = document.documentElement.getAttribute('data-theme');
+      if (currentTheme === 'dark') {
+        setLightTheme();
+        localStorage.setItem('theme', 'light');
+      } else {
+        setDarkTheme();
+        localStorage.setItem('theme', 'dark');
+      }
+    });
+
+    function setDarkTheme() {
+      document.documentElement.setAttribute('data-theme', 'dark');
+      toggleIcon.textContent = '☀️';
+    }
+
+    function setLightTheme() {
+      document.documentElement.setAttribute('data-theme', 'light');
+      toggleIcon.textContent = '🌙';
+    }
+  </script>
 
 </body>
 </html>
