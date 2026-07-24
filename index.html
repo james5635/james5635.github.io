@@ -1,8 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Sou Chanrojame - Profile</title>
 
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
@@ -70,8 +71,10 @@
       background: var(--toggle-btn-bg);
       border: none;
       color: var(--accent);
-      padding: 8px 18px; /* Gives it a distinct rectangular shape */
-      border-radius: 10px; /* Rounded rectangle corners */
+      padding: 8px 18px;
+      /* Gives it a distinct rectangular shape */
+      border-radius: 10px;
+      /* Rounded rectangle corners */
       cursor: pointer;
       font-size: 20px;
       display: flex;
@@ -154,8 +157,7 @@
     <div class="section">
       <h2>🎓 EDUCATION</h2>
       <div class="item">
-        <span class="highlight">Royal University of Phnom Penh (RUPP)</span><br>
-        BSc in Computer Science (2022–2026) [GPA: 3.56]
+        BSc in Computer Science
       </div>
     </div>
 
@@ -173,6 +175,13 @@
         Introduction to C++ (1st edition)
       </div>
     </div>
+    <div class="section">
+      <h2>📦 SOFTWARE APPLICATION</h2>
+      <div class="item">
+        <a target="_blank" rel="noopener noreferrer"
+          href="http://ec2-13-228-21-143.ap-southeast-1.compute.amazonaws.com/">FastChak</a>
+      </div>
+    </div>
   </div>
 
   <script>
@@ -181,7 +190,7 @@
 
     const savedTheme = localStorage.getItem('theme');
     const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-    
+
     if (savedTheme === 'dark' || (!savedTheme && systemPrefersDark)) {
       setDarkTheme();
     } else {
@@ -211,4 +220,5 @@
   </script>
 
 </body>
+
 </html>
