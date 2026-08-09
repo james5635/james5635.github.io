@@ -1,0 +1,57 @@
+@import url("https://fonts.googleapis.com/css2?family=Libertinus+Serif:ital,wght@0,400;0,600;0,700;1,400;1,600;1,700&display=swap");
+:root {
+    --md-primary-fg-color: #aa5500;
+    /*--md-typeset-a-color: #000;*/
+    --md-text-font: "Libertinus Serif";
+}
+
+.md-header {
+    /*background-color: #aa5500;*/
+}
+
+.md-header--shadow {
+    box-shadow: none;
+}
+
+.md-typeset {
+    font-size: 20px;
+}
+
+.md-typeset h1 {
+    color: #000;
+}
+
+.md-typeset h1,
+.md-typeset h2,
+.md-typeset h3,
+.md-typeset h4 {
+    font-weight: 600;
+}
+
+.md-nav {
+    font-size: 20px;
+}
+
+.md-nav__title {
+    color: #000;
+    font-weight: 600;
+}
+
+.md-footer {
+    display: none;
+}
+
+.md-header__title {
+    margin-left: 0 !important;
+}
+
+.md-typeset pre > code {
+    font-size: 16px;
+}
+
+/* Let the docs layout use more of large viewports without becoming fully fluid. */
+@media screen and (min-width: 76.25em) {
+    .md-grid {
+        max-width: clamp(76rem, 92vw, 92rem);
+    }
+}

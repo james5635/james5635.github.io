@@ -1,0 +1,18 @@
+site_name: My Docs
+site_url: https://mydomain.org/mysite
+theme:
+  name: material
+  features:
+    # Allows copying code blocks
+    - content.code.copy
+
+plugins:
+  - blog
+  - search
+
+markdown_extensions: 
+  - pymdownx.highlight
+  - pymdownx.superfences
+
+extra_css:
+  - stylesheet/extra.css
