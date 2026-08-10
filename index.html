@@ -63,9 +63,17 @@
       position: relative;
     }
 
-    /* Rounded Rectangle Toggle Button */
-    .theme-toggle {
+    .top-buttons {
       position: absolute;
+      top: 40px;
+      right: 45px;
+      display: flex;
+      gap: 10px;
+    }
+
+    /* Rounded Rectangle Toggle Button */
+    .blog,
+    .theme-toggle {
       top: 40px;
       right: 45px;
       background: var(--toggle-btn-bg);
@@ -82,6 +90,7 @@
       justify-content: center;
     }
 
+    .blog,
     .theme-toggle:hover {
       opacity: 0.9;
       transform: scale(1.02);
@@ -143,9 +152,17 @@
 <body>
 
   <div class="card">
-    <button class="theme-toggle" id="themeToggle" aria-label="Toggle Theme">
-      <span id="toggleIcon">🌙</span>
-    </button>
+    <div class="top-buttons">
+      <button class="blog">
+        <a href="blog/">
+          📝
+        </a>
+      </button>
+
+      <button class="theme-toggle" id="themeToggle" aria-label="Toggle Theme">
+        <span id="toggleIcon">🌙</span>
+      </button>
+    </div>
 
     <div class="name">Sou Chanrojame</div>
 
