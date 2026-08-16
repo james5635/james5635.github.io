@@ -5,8 +5,9 @@ In this tutorial, we will walk through the process of training a neural network 
 
 ## Prerequisites
 Before we begin, ensure you have the following installed:
+
 - Python 3.x
-- PyTorch   
+- PyTorch
 - Pygame
 
 ## Setup
@@ -15,6 +16,7 @@ pip install torch torchvision torchaudio pygame
 ```
 ## Code Overview
 The code is organized into several files, each responsible for different aspects of the game and the training process:
+
 - `main.py`: The main training loop where the agent interacts with the game environment.
 - `agent.py`: Defines the Agent class, which includes methods for decision-making, memory management, and training the neural network.
 - `game.py`: Implements the Snake game logic, including the game state, collision detection, and rendering.
