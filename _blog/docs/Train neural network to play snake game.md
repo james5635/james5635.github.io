@@ -438,4 +438,7 @@ class LinearQNet(nn.Module):
 
 ```
 
+## Demonstration
+To see the neural network in action, watch the following demonstration video:
 
+<iframe width="800" height="445" src="https://www.youtube.com/embed/XVrmH0q45kA?si=HoDSXsCBA9jjVbo7" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
